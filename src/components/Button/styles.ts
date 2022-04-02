@@ -15,43 +15,43 @@ export interface StyleProps {
 
 const getButtonHeight = (props: StyleProps) => {
   switch (props.size) {
-    case Size.Large:
-      return props.theme.inputs.large
-    case Size.Medium:
-      return props.theme.inputs.medium
-    case Size.Small:
-      return props.theme.inputs.small
+  case Size.Large:
+    return props.theme.inputs.large
+  case Size.Medium:
+    return props.theme.inputs.medium
+  case Size.Small:
+    return props.theme.inputs.small
   }
 } 
 
 const getButtonPadding = (props: StyleProps) => {
   switch (props.size) {
-    case Size.Large:
-      return props.theme.paddings.large
-    case Size.Medium:
-      return props.theme.paddings.medium
-    case Size.Small:
-      return props.theme.paddings.small
+  case Size.Large:
+    return props.theme.paddings.large
+  case Size.Medium:
+    return props.theme.paddings.medium
+  case Size.Small:
+    return props.theme.paddings.small
   } 
 }
 
 const getButtonFontSize = (props: StyleProps) => {
   switch (props.size) {
-    case Size.Large:
-      return props.theme.fontSizes.large
-    case Size.Medium:
-      return props.theme.fontSizes.medium
-    case Size.Small:
-      return props.theme.fontSizes.small
+  case Size.Large:
+    return props.theme.fontSizes.large
+  case Size.Medium:
+    return props.theme.fontSizes.medium
+  case Size.Small:
+    return props.theme.fontSizes.small
   } 
 }
 
 const getAppearanceColor = (props: StyleProps) => {
   switch (props.appearance) {
-    case Appearance.Primary:
-      return props.theme.color.primary.main
-    case Appearance.Secondary:
-      return props.theme.color.secondary.main
+  case Appearance.Primary:
+    return props.theme.color.primary.main
+  case Appearance.Secondary:
+    return props.theme.color.secondary.main
   }
 }
 
@@ -82,21 +82,21 @@ const getBackgroundColor = (props: StyleProps) =>
 const getHoverBackgroundColor = (props: StyleProps) => {
   if (props.appearance === Appearance.Primary) {
     switch (props.variant) {
-      case Variant.Filled:
-        return props.theme.color.primary.mainFade80
-      case Variant.Outlined:
-        return props.theme.color.primary.mainFade25
-      case Variant.Text:
-        return props.theme.color.primary.mainFade15
+    case Variant.Filled:
+      return props.theme.color.primary.mainFade80
+    case Variant.Outlined:
+      return props.theme.color.primary.mainFade25
+    case Variant.Text:
+      return props.theme.color.primary.mainFade15
     }
   } else if (props.appearance === Appearance.Secondary) {
     switch (props.variant) {
-      case Variant.Filled:
-        return props.theme.color.secondary.mainFade80
-      case Variant.Outlined:
-        return props.theme.color.secondary.mainFade25
-      case Variant.Text:
-        return props.theme.color.secondary.mainFade15 
+    case Variant.Filled:
+      return props.theme.color.secondary.mainFade80
+    case Variant.Outlined:
+      return props.theme.color.secondary.mainFade25
+    case Variant.Text:
+      return props.theme.color.secondary.mainFade15 
     }
   }
 }
