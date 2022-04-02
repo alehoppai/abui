@@ -103,6 +103,7 @@ const getHoverBackgroundColor = (props: StyleProps) => {
 
 const ButtonContainer = styled.button<StyleProps>`
   width: auto;
+  min-width: 150px;
   height: ${props => getButtonHeight(props as StyleProps)};
   border: ${props => getBorder(props as StyleProps)};
   color: ${props => getTextColor(props as StyleProps)};
