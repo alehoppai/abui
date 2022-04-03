@@ -3,10 +3,12 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import {
   Button,
-  Size,
   Variant,
-  Appearance,
 } from '../../src/components/Button'
+import {
+  Size,
+  Appearance,
+} from '../enums'
 
 export default {
   size: Size.Medium,

@@ -1,19 +1,22 @@
 import styled from 'styled-components'
+import { Variant } from './enums'
 import {
   Size,
-  Variant,
   Appearance,
-} from './enums'
+} from '../../enums'
 import { Theme } from '../../theme'
 
 export interface StyleProps {
   size: Size
   variant: Variant
   appearance: Appearance 
+}
+
+interface StylePropsWithTheme extends StyleProps {
   theme: Theme
 }
 
-const getButtonHeight = (props: StyleProps) => {
+const getButtonHeight = (props: StylePropsWithTheme) => {
   switch (props.size) {
   case Size.Large:
     return props.theme.inputs.large
@@ -24,7 +27,7 @@ const getButtonHeight = (props: StyleProps) => {
   }
 } 
 
-const getButtonPadding = (props: StyleProps) => {
+const getButtonPadding = (props: StylePropsWithTheme) => {
   switch (props.size) {
   case Size.Large:
     return props.theme.paddings.large
@@ -35,7 +38,7 @@ const getButtonPadding = (props: StyleProps) => {
   } 
 }
 
-const getButtonFontSize = (props: StyleProps) => {
+const getButtonFontSize = (props: StylePropsWithTheme) => {
   switch (props.size) {
   case Size.Large:
     return props.theme.fontSizes.large
@@ -46,7 +49,7 @@ const getButtonFontSize = (props: StyleProps) => {
   } 
 }
 
-const getAppearanceColor = (props: StyleProps) => {
+const getAppearanceColor = (props: StylePropsWithTheme) => {
   switch (props.appearance) {
   case Appearance.Primary:
     return props.theme.color.primary.main
@@ -55,12 +58,12 @@ const getAppearanceColor = (props: StyleProps) => {
   }
 }
 
-const getBorder = (props: StyleProps) => 
+const getBorder = (props: StylePropsWithTheme) => 
   props.variant === Variant.Outlined
     ? `1px solid ${getAppearanceColor(props)}` 
     : 'none'
 
-const getTextColor = (props: StyleProps) => {
+const getTextColor = (props: StylePropsWithTheme) => {
   if (props.variant === Variant.Filled) {
     return props.appearance === Appearance.Primary
       ? props.theme.color.primary.text
@@ -72,14 +75,14 @@ const getTextColor = (props: StyleProps) => {
     : props.theme.color.secondary.main 
 }
 
-const getBackgroundColor = (props: StyleProps) =>
+const getBackgroundColor = (props: StylePropsWithTheme) =>
   props.variant === Variant.Filled
     ? props.appearance === Appearance.Primary
       ? props.theme.color.primary.main
       : props.theme.color.secondary.main
     : 'transparent'
 
-const getHoverBackgroundColor = (props: StyleProps) => {
+const getHoverBackgroundColor = (props: StylePropsWithTheme) => {
   if (props.appearance === Appearance.Primary) {
     switch (props.variant) {
     case Variant.Filled:
@@ -101,24 +104,24 @@ const getHoverBackgroundColor = (props: StyleProps) => {
   }
 }
 
-const ButtonContainer = styled.button<StyleProps>`
+const ButtonContainer = styled.button<StylePropsWithTheme>`
   width: auto;
   min-width: 150px;
-  height: ${props => getButtonHeight(props as StyleProps)};
-  border: ${props => getBorder(props as StyleProps)};
-  color: ${props => getTextColor(props as StyleProps)};
-  padding-right: ${props => getButtonPadding(props as StyleProps)};
-  padding-left: ${props => getButtonPadding(props as StyleProps)};
+  height: ${props => getButtonHeight(props)};
+  border: ${props => getBorder(props)};
+  color: ${props => getTextColor(props)};
+  padding-right: ${props => getButtonPadding(props)};
+  padding-left: ${props => getButtonPadding(props)};
   
-  font-size: ${props => getButtonFontSize(props as StyleProps)};
+  font-size: ${props => getButtonFontSize(props)};
   
-  background-color: ${props => getBackgroundColor(props as StyleProps)};
+  background-color: ${props => getBackgroundColor(props)};
   cursor: pointer;
 
   transition: ease-out .3s;
 
   &:hover {
-    background-color: ${props => getHoverBackgroundColor(props as StyleProps)};
+    background-color: ${props => getHoverBackgroundColor(props)};
   }
 `
 
