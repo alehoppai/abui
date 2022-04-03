@@ -1,9 +1,9 @@
 import React from 'react'
+import { Variant } from './enums'
 import {
   Size,
-  Variant,
   Appearance,
-} from './enums'
+} from '../../enums'
 import {
   ButtonContainer,
   StyleProps
