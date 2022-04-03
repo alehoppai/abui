@@ -20,9 +20,15 @@ interface ThemeSizings {
   large: string
 }
 
+interface CheckInputsSizings {
+  width: ThemeSizings
+  height: ThemeSizings
+}
+
 export interface Theme {
   color: ThemeColors
   inputs: ThemeSizings
+  checkInputs: CheckInputsSizings
   paddings: ThemeSizings
   fontSizes: ThemeSizings
 }
