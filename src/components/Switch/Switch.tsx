@@ -1,11 +1,6 @@
 import React from 'react'
-
-import {
-  SwitchContainer,
-  SwitchFill,
-  SwitchIndicator,
-  StyleProps
-} from './styles'
+import { SwitchContainer, SwitchFill, SwitchIndicator } from './styles'
+import { StyleProps } from './types'
 
 import {
   Size,
