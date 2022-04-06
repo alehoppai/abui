@@ -15,9 +15,9 @@ interface ThemeColors {
 }
 
 interface ThemeSizings {
-  small: string
-  medium: string
-  large: string
+  small: number
+  medium: number
+  large: number
 }
 
 interface CheckInputsSizings {
@@ -29,6 +29,7 @@ export interface Theme {
   color: ThemeColors
   inputs: ThemeSizings
   checkInputs: CheckInputsSizings
+  radioInputs: ThemeSizings
   paddings: ThemeSizings
   fontSizes: ThemeSizings
 }
