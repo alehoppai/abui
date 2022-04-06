@@ -8,3 +8,9 @@ export enum Size {
   Medium = 'medium',
   Large = 'large',
 }
+
+export enum Variant {
+  Filled = 'filled',
+  Outlined = 'Outlined',
+  Text = 'Text',
+}

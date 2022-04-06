@@ -1,13 +1,7 @@
 import React from 'react'
-import { Variant } from './enums'
-import {
-  Size,
-  Appearance,
-} from '../../enums'
-import {
-  ButtonContainer,
-  StyleProps
-} from './styles'
+import { Size, Appearance, Variant } from '../../enums'
+import { ButtonContainer } from './styles'
+import { StyleProps } from './types'
 
 interface Props extends StyleProps {
   onClick: () => void
@@ -18,7 +12,6 @@ function Button ({
   size = Size.Medium,
   variant = Variant.Text,
   appearance = Appearance.Primary,
-  
 
   onClick,
   label = 'SIGN ME A LABEL',

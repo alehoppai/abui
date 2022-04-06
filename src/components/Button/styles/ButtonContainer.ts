@@ -1,20 +1,6 @@
 import styled from 'styled-components'
-import { Variant } from './enums'
-import {
-  Size,
-  Appearance,
-} from '../../enums'
-import { Theme } from '../../theme'
-
-export interface StyleProps {
-  size: Size
-  variant: Variant
-  appearance: Appearance 
-}
-
-interface StylePropsWithTheme extends StyleProps {
-  theme: Theme
-}
+import { Size, Appearance, Variant } from '../../../enums'
+import { StylePropsWithTheme } from '../types'
 
 const getButtonHeight = (props: StylePropsWithTheme) => {
   switch (props.size) {
@@ -107,13 +93,13 @@ const getHoverBackgroundColor = (props: StylePropsWithTheme) => {
 const ButtonContainer = styled.button<StylePropsWithTheme>`
   width: auto;
   min-width: 150px;
-  height: ${props => getButtonHeight(props)};
+  height: ${props => getButtonHeight(props)}px;
   border: ${props => getBorder(props)};
   color: ${props => getTextColor(props)};
-  padding-right: ${props => getButtonPadding(props)};
-  padding-left: ${props => getButtonPadding(props)};
+  padding-right: ${props => getButtonPadding(props)}px;
+  padding-left: ${props => getButtonPadding(props)}px;
   
-  font-size: ${props => getButtonFontSize(props)};
+  font-size: ${props => getButtonFontSize(props)}px;
   
   background-color: ${props => getBackgroundColor(props)};
   cursor: pointer;
