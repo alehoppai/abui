@@ -20,17 +20,18 @@ export default {
     appearance: Appearance.Primary,
     selectedOption: 1,
     options: [
-      { value: 1, label: 'Vitaem', },
-      { value: 2, label: 'Vas', },
-      { value: 3, label: 'U', },
-      { value: 4, label: 'Nasai', },
-      { value: 5, label: 'Viescy', },
-      { value: 6, label: 'Stakhavici', },
+      { value: 1, label: 'John', },
+      { value: 2, label: 'Marry', },
+      { value: 3, label: 'Union', },
+      { value: 4, label: 'Divorce', },
+      { value: 5, label: 'Marriage', },
+      { value: 6, label: 'Forgot', },
     ],
   },
 } as ComponentMeta<typeof RadioGroup>
 
-const Template: ComponentStory<typeof RadioGroup> = (args) => <RadioGroup {...args} />
+const Template: ComponentStory<typeof RadioGroup> = (args) =>
+  <RadioGroup {...args} />
 
 export const Default = Template.bind({})
 

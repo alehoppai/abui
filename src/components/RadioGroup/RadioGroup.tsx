@@ -37,8 +37,9 @@ function RadioGroup({
 }: Props) {
   return (<>
     { title?.length && <ListTitle>{title}</ListTitle> || null }
+
     <ListContainer listDirection={listDirection}>
-      {options.map(({label, value}) => <ListItem
+      {options.map(({ label, value }) => <ListItem
         key={`${label.trim()}-${value}`}
         htmlFor={`${label.trim()}-${value}`}
         listDirection={listDirection}

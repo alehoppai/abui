@@ -2,7 +2,10 @@ import styled from 'styled-components'
 import { StylePropsWithTheme } from '../types'
 import { Appearance, Size } from '../../../enums'
 
-type ListItemRadioProps = Pick<StylePropsWithTheme, 'theme' | 'size' | 'selected' | 'appearance'>
+type ListItemRadioProps = Pick<
+  StylePropsWithTheme,
+  'theme' | 'size' | 'selected' | 'appearance'
+>
 
 const getMainColor = (props: ListItemRadioProps) => 
   props.appearance === Appearance.Primary

@@ -36,6 +36,23 @@
         "semi": [
             "error",
             "never"
-        ]
+        ],
+        "max-len": [
+            "error",
+            80
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "array-bracket-spacing": [
+            "error",
+            "always"
+        ],
+        "computed-property-spacing": [
+            "error",
+            "always"
+        ],
+        "no-cond-assign": "error"
     }
 }
