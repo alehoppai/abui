@@ -1,17 +1,7 @@
 import styled from 'styled-components'
 import { Size, Appearance, Variant } from '../../../enums'
 import { StylePropsWithTheme } from '../types'
-
-const getButtonHeight = (props: StylePropsWithTheme) => {
-  switch (props.size) {
-  case Size.Large:
-    return props.theme.inputs.large
-  case Size.Medium:
-    return props.theme.inputs.medium
-  case Size.Small:
-    return props.theme.inputs.small
-  }
-} 
+import { getThemedSize } from '../../../helpers'
 
 const getButtonPadding = (props: StylePropsWithTheme) => {
   switch (props.size) {
@@ -93,7 +83,7 @@ const getHoverBackgroundColor = (props: StylePropsWithTheme) => {
 const ButtonContainer = styled.button<StylePropsWithTheme>`
   width: auto;
   min-width: 150px;
-  height: ${props => getButtonHeight(props)}px;
+  height: ${props => getThemedSize(props.size, props.theme)}px;
   border: ${props => getBorder(props)};
   color: ${props => getTextColor(props)};
   padding-right: ${props => getButtonPadding(props)}px;
