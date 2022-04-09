@@ -1,0 +1,1 @@
+export { getThemedSize } from './getThemedSize'
