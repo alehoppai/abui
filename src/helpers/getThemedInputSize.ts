@@ -1,7 +1,7 @@
 import { Size } from '../enums'
 import { Theme } from '../theme'
 
-export function getThemedSize(
+export function getThemedInputSize(
   size: Size,
   theme: Theme,
 ): number {
