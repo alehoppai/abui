@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { ButtonContainer } from '../../Button/styles'
-import { getThemedSize } from '../../../helpers'
+import { getThemedInputSize } from '../../../helpers'
 
 const FloatingButtonContainer = styled(ButtonContainer)`
-  width: ${props => getThemedSize(props.size, props.theme)}px;
-  height: ${props => getThemedSize(props.size, props.theme)}px;
+  width: ${props => getThemedInputSize(props.size, props.theme)}px;
+  height: ${props => getThemedInputSize(props.size, props.theme)}px;
 
   border-radius: 50%;
   max-width: initial;

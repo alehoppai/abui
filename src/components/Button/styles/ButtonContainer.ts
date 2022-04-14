@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Size, Appearance, Variant } from '../../../enums'
 import { StylePropsWithTheme } from '../types'
-import { getThemedSize } from '../../../helpers'
+import { getThemedInputSize, getThemedFontSize } from '../../../helpers'
 
 const getButtonPadding = (props: StylePropsWithTheme) => {
   switch (props.size) {
@@ -11,17 +11,6 @@ const getButtonPadding = (props: StylePropsWithTheme) => {
     return props.theme.paddings.medium
   case Size.Small:
     return props.theme.paddings.small
-  } 
-}
-
-const getButtonFontSize = (props: StylePropsWithTheme) => {
-  switch (props.size) {
-  case Size.Large:
-    return props.theme.fontSizes.large
-  case Size.Medium:
-    return props.theme.fontSizes.medium
-  case Size.Small:
-    return props.theme.fontSizes.small
   } 
 }
 
@@ -83,13 +72,13 @@ const getHoverBackgroundColor = (props: StylePropsWithTheme) => {
 const ButtonContainer = styled.button<StylePropsWithTheme>`
   width: auto;
   min-width: 150px;
-  height: ${props => getThemedSize(props.size, props.theme)}px;
+  height: ${props => getThemedInputSize(props.size, props.theme)}px;
   border: ${props => getBorder(props)};
   color: ${props => getTextColor(props)};
   padding-right: ${props => getButtonPadding(props)}px;
   padding-left: ${props => getButtonPadding(props)}px;
   
-  font-size: ${props => getButtonFontSize(props)}px;
+  font-size: ${props => getThemedFontSize(props.size, props.theme)}px;
   
   background-color: ${props => getBackgroundColor(props)};
   cursor: pointer;
