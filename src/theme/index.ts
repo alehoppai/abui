@@ -5,6 +5,7 @@ interface TextConfig {
   main: string
   text: string
   mainFade80: string
+  mainFade50: string
   mainFade25: string
   mainFade15: string
 }
