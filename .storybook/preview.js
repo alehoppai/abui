@@ -4,10 +4,7 @@ import { ThemeProvider } from 'styled-components'
 
 import { DayTheme, NightTheme } from '../src/theme'
 
-addDecorator(withThemesProvider([
-  DayTheme,
-  NightTheme,
-]), ThemeProvider)
+addDecorator(withThemesProvider([ DayTheme, NightTheme ]), ThemeProvider)
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

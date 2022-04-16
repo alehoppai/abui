@@ -1,6 +1,7 @@
 import { BaseTheme } from './base'
 
 export const NightTheme = {
+  name: 'Default Night Theme',
   color: {
     primary: {
       main: '#B1BEC4',
