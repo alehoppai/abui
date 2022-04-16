@@ -1,6 +1,7 @@
 import { BaseTheme } from './base'
 
 export const DayTheme = {
+  name: 'Default Day Theme',
   color: {
     primary: {
       main: '#4D5E68',
