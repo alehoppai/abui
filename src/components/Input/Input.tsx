@@ -8,6 +8,8 @@ interface Props extends StyleProps {
   label?: string
   placeholder?: string
   onChange: (value: string) => void
+  onFocus?: () => void
+  onBlur?: () => void
 }
 
 function Input({
@@ -15,11 +17,29 @@ function Input({
   label,
   placeholder,
   onChange,
+  onFocus,
+  onBlur,
 
   variant = Variant.Filled,
   size = Size.Medium,
 }: Props) {
   const [ focus, setFocus ] = useState(false)
+
+  const onFocusInput = () => {
+    setFocus(true)
+
+    if (onFocus != null) {
+      onFocus()
+    }
+  }
+
+  const onBlurInput = () => {
+    setFocus(false)
+
+    if (onBlur != null) {
+      onBlur()
+    }
+  }
 
   return (<InputRow
     variant={variant}    
@@ -35,8 +55,8 @@ function Input({
       focus={focus}
     >
       <input
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+        onFocus={onFocusInput}
+        onBlur={onBlurInput}
         value={value}
         onChange={
           (event: React.ChangeEvent<HTMLInputElement>) =>
