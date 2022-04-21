@@ -4,11 +4,13 @@ import { getThemedInputSize } from '../../../helpers'
 import { Variant } from '../../../enums'
 import { Theme } from '../../../theme'
 
+// TODO: Same thing used in Input component, extract to shared helpers
 const getInputBackgroundColor = (
   variant: Variant,
   { color: { primary: { mainFade15 } } }: Theme,
 ) => variant === Variant.Filled ? mainFade15 : 'transparent'
 
+// TODO: Same thing used in Input component, extract to shared helpers
 const getFocusedColor = (focus = false, { color: { primary } }: Theme) =>
   focus ? primary.main : primary.mainFade50
 
