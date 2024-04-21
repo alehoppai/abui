@@ -1,5 +1,4 @@
-const Text = require("./views/text/text")
-const Box = require("./views/box/box")
+import { Box, Text } from "./views"
 
 const box = Box(
   Box(

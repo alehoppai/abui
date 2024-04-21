@@ -1,8 +1,21 @@
-class _Box {
-  modifiers = {}
-  children = []
+import { View, BoxTag } from "./types"
 
-  constructor(...children) {
+type BoxModifiers = {
+  padding: string
+  "padding-inline": string
+  "padding-block": string
+  "padding-top": string
+  "padding-right": string
+  "padding-bottom": string
+  "padding-left": string
+}
+
+class _Box {
+  modifiers: Partial<BoxModifiers> = {}
+  children: View[] = []
+  tag: BoxTag = "div"
+
+  constructor(...children: View[]) {
     this.children = Array.from(children)
   }
 
@@ -36,6 +49,4 @@ class _Box {
   }
 }
 
-const Box = (...children) => new _Box(...children)
-
-module.exports = Box
+export const Box = (...children: View[]) => new _Box(...children)
