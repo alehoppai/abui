@@ -1,6 +1,6 @@
 import { Page, Box, Text } from "./views"
 
-Page(
+const page = Page(
   "Sample Page",
   Box(
     Box(
@@ -17,3 +17,5 @@ Page(
   ).padding("block", 24, "px"),
   Box()
 )
+
+console.log(page.template)
