@@ -1,3 +1,4 @@
+import randomstring from "randomstring"
 import { View, BoxTag } from "./types"
 
 type BoxModifiers = {
@@ -10,13 +11,21 @@ type BoxModifiers = {
   "padding-left": string
 }
 
-class _Box {
+class _Box implements View {
   modifiers: Partial<BoxModifiers> = {}
   children: View[] = []
   tag: BoxTag = "div"
+  className: string
 
   constructor(...children: View[]) {
     this.children = Array.from(children)
+    this.className = randomstring.generate(7)
+  }
+
+  /** FIXME: little trick to not copy BOX and renaming to BODY */
+  asBody() {
+    this.tag = "body"
+    return this
   }
 
   padding(dir = "all", value = 0, measures = "px") {

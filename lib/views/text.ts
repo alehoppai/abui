@@ -1,4 +1,5 @@
 import { Property } from "csstype"
+import randomstring from "randomstring"
 import { TextTag, View } from "./types"
 
 type TextModifiers = {
@@ -14,10 +15,12 @@ class _Text implements View {
   modifiers: Partial<TextModifiers> = {}
   value = ""
   tag: TextTag = "span"
+  className: string
 
   constructor(value = "", inline = true) {
     this.value = value
     this.tag = inline ? "span" : "p"
+    this.className = randomstring.generate(7)
 
     return this
   }
