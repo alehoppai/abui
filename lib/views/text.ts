@@ -23,6 +23,8 @@ class _Text implements View {
     hover: {},
   }
 
+  events: string[] = []
+
   value = ""
 
   constructor(value = "", inline = true) {
@@ -40,6 +42,11 @@ class _Text implements View {
   }
   hover(modifiers: Partial<TextModifiers>) {
     this.modifiers.hover = { ...this.modifiers.hover, ...modifiers }
+    return this
+  }
+
+  onClick(cb: (event: MouseEvent) => void) {
+    this.events.push(cb.toString())
     return this
   }
 }

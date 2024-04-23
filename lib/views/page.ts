@@ -14,7 +14,7 @@ class _Page {
 
   get template() {
     const bodyTemplate = this.getTemplate(this.body)
-    const styles = this.getStyles(this.body)
+    const { styles, js } = this.mapExtra(this.body)
 
     return `
 <!DOCTYPE html>
@@ -26,30 +26,33 @@ class _Page {
   <style>${styles}</style>
 </head>
 ${bodyTemplate}
+<script>${js}</script>
 </html>
     `
   }
 
-  private getCss(
+  private getExtra(
     node: View,
-    css: Record<string, View["modifiers"]> = {}
-  ): Record<string, View["modifiers"]> {
+    css: Record<string, View["modifiers"]> = {},
+    js: string[] = []
+  ): { css: Record<string, View["modifiers"]>; js: string[] } {
     // @ts-expect-error -- dynamic access
     css["." + node.className] = node.modifiers.base
     // @ts-expect-error -- dynamic access
     css["." + node.className + ":hover"] = node.modifiers.hover
+    node.events && js.push(...node.events)
 
     if (node.children && node.children.length) {
       node.children.forEach((child) => {
-        this.getCss(child, css)
+        this.getExtra(child, css, js)
       })
     }
 
-    return css
+    return { css, js }
   }
 
-  private getStyles(node: View): string {
-    const css = this.getCss(node)
+  private mapExtra(root: View): { styles: string; js: string } {
+    const { css, js } = this.getExtra(root)
     let styles = ""
 
     for (const [className, modifiers] of Object.entries(css)) {
@@ -59,9 +62,10 @@ ${bodyTemplate}
         .join(";")};} `
     }
 
-    return styles
+    return { styles, js: js.join("") }
   }
 
+  // TODO: rename node to root
   private getTemplate(node: View): string {
     let html = ""
 

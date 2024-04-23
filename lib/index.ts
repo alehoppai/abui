@@ -12,7 +12,11 @@ const page = Page(
         "font-weight": "bold",
         "font-size": "30px",
       }),
-      Text(" World!").style({ color: "red", "font-size": "20px" })
+      Text(" World!")
+        .style({ color: "red", "font-size": "20px" })
+        .onClick((event) => {
+          alert(event.currentTarget)
+        })
     ).style({ padding: "10px" })
   ),
   Box(
