@@ -46,7 +46,8 @@ class _Text implements View {
   }
 
   onClick(cb: (event: MouseEvent) => void) {
-    this.events.push(cb.toString())
+    const listener = `document.querySelector('.${this.className}').addEventListener('click', ${cb.toString()})`
+    this.events.push(listener)
     return this
   }
 }
