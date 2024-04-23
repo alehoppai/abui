@@ -1,5 +1,6 @@
 import randomstring from "randomstring"
 import { View, BoxTag } from "./types"
+import { Properties } from "csstype"
 
 type BoxModifiers = {
   padding: string
@@ -12,14 +13,20 @@ type BoxModifiers = {
 }
 
 class _Box implements View {
-  modifiers: Partial<BoxModifiers> = {}
+  readonly className: string
+
+  tag: BoxTag
+  modifiers = { base: {}, hover: {} }
+
   children: View[] = []
-  tag: BoxTag = "div"
-  className: string
 
   constructor(...children: View[]) {
+    this.tag = "div"
     this.children = Array.from(children)
-    this.className = randomstring.generate(7)
+    this.className = randomstring.generate({
+      length: 12,
+      charset: "alphabetic",
+    })
   }
 
   /** FIXME: little trick to not copy BOX and renaming to BODY */
@@ -28,32 +35,12 @@ class _Box implements View {
     return this
   }
 
-  padding(dir = "all", value = 0, measures = "px") {
-    switch (dir) {
-      case "all":
-      default:
-        this.modifiers["padding"] = `${value}${measures}`
-        break
-      case "inline":
-        this.modifiers["padding-inline"] = `${value}${measures}`
-        break
-      case "block":
-        this.modifiers["padding-block"] = `${value}${measures}`
-        break
-      case "top":
-        this.modifiers["padding-top"] = `${value}${measures}`
-        break
-      case "right":
-        this.modifiers["padding-right"] = `${value}${measures}`
-        break
-      case "bottom":
-        this.modifiers["padding-bottom"] = `${value}${measures}`
-        break
-      case "left":
-        this.modifiers["padding-left"] = `${value}${measures}`
-        break
-    }
-
+  style(modifiers: Partial<BoxModifiers>) {
+    this.modifiers.base = { ...this.modifiers.base, ...modifiers }
+    return this
+  }
+  hover(modifiers: Partial<BoxModifiers>) {
+    this.modifiers.hover = { ...this.modifiers.hover, ...modifiers }
     return this
   }
 }

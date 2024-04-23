@@ -34,7 +34,10 @@ ${bodyTemplate}
     node: View,
     css: Record<string, View["modifiers"]> = {}
   ): Record<string, View["modifiers"]> {
-    css["." + node.className] = node.modifiers
+    // @ts-expect-error -- dynamic access
+    css["." + node.className] = node.modifiers.base
+    // @ts-expect-error -- dynamic access
+    css["." + node.className + ":hover"] = node.modifiers.hover
 
     if (node.children && node.children.length) {
       node.children.forEach((child) => {

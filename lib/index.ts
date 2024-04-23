@@ -1,21 +1,45 @@
 import { Page, Box, Text } from "./views"
 
+// FYI: for tests only
+import { writeFileSync } from "node:fs"
+
 const page = Page(
   "Sample Page",
   Box(
     Box(
-      Text("Hello,").fontStyle("italic").fontWeight("bold").fontSize("30px"),
-      Text(" World!").color("red").fontSize("20px")
-    ).padding("all", 10, "px")
+      Text("Hello,").style({
+        "font-style": "italic",
+        "font-weight": "bold",
+        "font-size": "30px",
+      }),
+      Text(" World!").style({ color: "red", "font-size": "20px" })
+    ).style({ padding: "10px" })
   ),
   Box(
-    Text("Another,")
-      .fontStyle("italic")
-      .fontWeight("semibold")
-      .fontSize("34px"),
-    Text(" Text!").color("green").fontSize("24px")
-  ).padding("block", 24, "px"),
-  Box()
+    Text("Another,").style({
+      "font-style": "italic",
+      "font-weight": "semibold",
+      "font-size": "34px",
+    }),
+    Text(" Text!")
+      .style({
+        color: "green",
+        "font-size": "24px",
+      })
+      .hover({ "font-weight": "bolder" })
+  ).style({ "padding-block": "10px" }),
+  Box(
+    Text("Hover Test")
+      .style({
+        "font-size": "16px",
+        color: "purple",
+      })
+      .hover({
+        "font-size": "24px",
+        color: "blue",
+      })
+  )
 )
 
 console.log(page.template)
+writeFileSync("test.html", page.template)

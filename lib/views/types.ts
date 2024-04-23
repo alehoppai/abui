@@ -13,10 +13,13 @@ export type BoxTag =
   | "main"
 
 export interface View {
-  modifiers: Properties
-  tag: TextTag | BoxTag
-  // TODO: Preserve(cache) random className for each view
-  className: string
-  value?: string
+  readonly className: string
+  readonly value?: string
+
+  modifiers: Record<"base" | "hover", Properties>
   children?: View[]
+  tag: TextTag | BoxTag
+
+  style(modifier: Properties): View
+  hover(modifier: Properties): View
 }
