@@ -1,5 +1,5 @@
 import { View } from "./types"
-import { Box } from "./box"
+import { Body} from "./body"
 
 class _Page {
   pageConfig: Record<string, string> = {
@@ -7,8 +7,8 @@ class _Page {
   }
   body: View
 
-  constructor(title: string, ...body: View[]) {
-    this.body = Box(...body).asBody()
+  constructor(title: string, ...children: View[]) {
+    this.body = Body(...children)
     this.pageConfig.title = title
   }
 
@@ -65,7 +65,6 @@ ${bodyTemplate}
     return { styles, js: js.join("") }
   }
 
-  // TODO: rename node to root
   private getTemplate(node: View): string {
     let html = ""
 
@@ -83,5 +82,5 @@ ${bodyTemplate}
   }
 }
 
-export const Page = (title: string, ...body: View[]) =>
-  new _Page(title, ...body)
+export const Page = (title: string, ...children: View[]) =>
+  new _Page(title, ...children)

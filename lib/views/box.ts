@@ -1,27 +1,25 @@
 import randomstring from "randomstring"
 import { View, BoxTag } from "./types"
-import { Properties } from "csstype"
+import { Property } from "csstype"
 
-type BoxModifiers = {
-  padding: string
-  "padding-inline": string
-  "padding-block": string
-  "padding-top": string
-  "padding-right": string
-  "padding-bottom": string
-  "padding-left": string
+export type BoxModifiers = {
+  padding: Property.Padding
+  "padding-inline": Property.PaddingInline
+  "padding-block": Property.PaddingBlock
+  "padding-top": Property.PaddingTop
+  "padding-right": Property.PaddingRight
+  "padding-bottom": Property.PaddingBottom
+  "padding-left": Property.PaddingLeft
 }
 
-class _Box implements View {
+export class _Box implements View {
   readonly className: string
 
-  tag: BoxTag
+  tag: BoxTag = "div"
   modifiers = { base: {}, hover: {} }
-
   children: View[] = []
 
   constructor(...children: View[]) {
-    this.tag = "div"
     this.children = Array.from(children)
     this.className = randomstring.generate({
       length: 12,
@@ -29,10 +27,8 @@ class _Box implements View {
     })
   }
 
-  /** FIXME: little trick to not copy BOX and renaming to BODY */
-  asBody() {
-    this.tag = "body"
-    return this
+  as(as: BoxTag) {
+    this.tag = as
   }
 
   style(modifiers: Partial<BoxModifiers>) {
