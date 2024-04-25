@@ -1,14 +1,13 @@
-import { View } from "./types"
-import { _Box, BoxModifiers } from "./box"
+import { View, BoxModifiers } from "../types"
+
+import { _Box } from "./box"
 
 type BodyModifiers = BoxModifiers & {}
 
 class _Body extends _Box implements View {
   modifiers = { base: {}, hover: {} }
-  // children: View[] = []
 
   constructor(...children: View[]) {
-    console.log('IN_BODY', children)
     super(...children)
     super.as("body")
   }

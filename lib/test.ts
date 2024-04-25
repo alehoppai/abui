@@ -1,4 +1,4 @@
-import { Page, Box, Text } from "./views"
+import { Page, Box, Text } from "./ui"
 
 // FYI: for tests only
 import { writeFileSync } from "node:fs"

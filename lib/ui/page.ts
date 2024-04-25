@@ -1,4 +1,4 @@
-import { View } from "./types"
+import { View } from "../types"
 import { Body} from "./body"
 
 class _Page {

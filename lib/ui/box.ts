@@ -1,16 +1,6 @@
 import randomstring from "randomstring"
-import { View, BoxTag } from "./types"
-import { Property } from "csstype"
+import { View, BoxTag, BoxModifiers } from "../types"
 
-export type BoxModifiers = {
-  padding: Property.Padding
-  "padding-inline": Property.PaddingInline
-  "padding-block": Property.PaddingBlock
-  "padding-top": Property.PaddingTop
-  "padding-right": Property.PaddingRight
-  "padding-bottom": Property.PaddingBottom
-  "padding-left": Property.PaddingLeft
-}
 
 export class _Box implements View {
   readonly className: string

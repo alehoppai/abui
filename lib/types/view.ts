@@ -1,16 +1,5 @@
 import { Properties } from "csstype"
-
-export type TextTag = "span" | "p"
-export type BoxTag =
-  | "body"
-  | "div"
-  | "section"
-  | "article"
-  | "aside"
-  | "header"
-  | "footer"
-  | "nav"
-  | "main"
+import { Tag } from "./tags"
 
 export type EventCb = (event: MouseEvent) => void
 
@@ -21,7 +10,7 @@ export interface View {
   events?: string[]
   modifiers: Record<"base" | "hover", Properties>
   children?: View[]
-  tag: TextTag | BoxTag
+  tag: Tag
 
   style(modifier: Properties): View
   hover(modifier: Properties): View

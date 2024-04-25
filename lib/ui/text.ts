@@ -1,16 +1,6 @@
-import { Properties, Property } from "csstype"
 import randomstring from "randomstring"
 import { v4 as uuid } from "uuid"
-import { TextTag, View } from "./types"
-
-type TextModifiers = {
-  "font-weight": Property.FontWeight
-  "font-size": Property.FontSize
-  "text-decoration": Property.TextDecoration
-  "font-style": Property.FontStyle
-  "line-height": Property.LineHeight
-  color: Property.Color
-}
+import { TextTag, View, TextModifiers } from "../types"
 
 // TODO: rework from func calling for each modifier, to apply func with object as arg
 class _Text implements View {
